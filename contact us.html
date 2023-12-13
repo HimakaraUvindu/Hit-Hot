@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact us</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <link rel="preload" href="contact us.css" as="style">
+        <link rel="stylesheet" href="contact us.css">
+    </head>
+    <body>  
+     <!--Navigation bar-->
+    <header>
+        <div class="logo"><a href="/index.html"><img src="/image/icon.png" width="80px" height="50px"></a>
+        </div>
+        <nav>
+            <ul class="navigation">
+                <li><a href="/contact us.html">Contact us</a></li>
+                <li><div class="dropdown"><button class="dropbtn">Menu<i class="fa fa-caret-down"></i></button><div class="dropdown-content">
+                    <a href="/party.html">Party Menu</a>
+                    <a href="/Arms.html">Arms giving & funeral Menu</a>
+                </div></div></li>
+                <li><a href="/index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Contact Form -->
+    <div class="contact-section">
+        <h1>Contact Us</h1>
+        <div class="border"></div>
+        <form  onsubmit="submitForm(event)" name="Contact us" class="contact-form">
+            
+            <input type="text" name="Your Name" class="c-text" placeholder="Your Name">
+          
+            <input type="email" name="Email" class="c-text" placeholder="Email">
+           
+            <input type="text" name="Subject" class="c-text" placeholder="Subject">
+            <textarea name="Your Message" class="c-text" placeholder="Your Message"></textarea>
+            <input type="submit" class="c-btn" value="Send Message">
+        </form>
+    </div>
+    <script>
+        function submitForm(event) {
+          event.preventDefault();
+          var form = event.target;
+          var formData = new FormData(form);
+          var data = {};
+          formData.forEach(function (value, key) {
+            data[key] = value;
+          });
+          var url = "https://script.google.com/macros/s/AKfycbwW-CD6ripBU8rODfNEzwDYkS4HSNziSUo4SCeR3XE7WZO2meyqmaduHb7kQ8YoSLasTw/exec";
+          fetch(url, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json"
+            },
+            mode: "no-cors" // Add this line to set no-cors mode
+          })
+          .then(function (response) {
+            alert("Form submitted successfully!");
+            form.reset();
+          })
+          .catch(function (error) {
+            alert("An error occurred: " + error.message);
+          });
+        }
+      </script>  
+<!--Footer-->
+<footer>
+    <div class="footer-content">
+        <h3>Hit hot</h3>
+        <p>297/2,</p>
+        <p>pragathipura,</p>
+        <p>madiwela,</p>
+        <p>kotte</p>
+        <br>
+        <p>+94 768949954</p>
+        <p>+94 702220045</p>
+    </div>
+<br>
+    <div class="footer-bottom">
+        <p>Copyright &copy;2023 Hit hot. All right reserved by PixelPerfect Tech</p>
+    </div>
+</footer>
+    </body>
+</html>
