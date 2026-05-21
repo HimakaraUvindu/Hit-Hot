@@ -211,7 +211,7 @@ footer{
   text-transform: capitalize;
 }
 body {
-  background-image: url("/image/BG.jpg");
+  background-image: url("image/BG.jpg");
   background-size: cover; 
   background-repeat: no-repeat; 
 }
