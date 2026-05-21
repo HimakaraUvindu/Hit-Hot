@@ -1,25 +1,39 @@
-
 let slideIndex = 0;
-showSlides();
+let slideTimer;
 
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex - 1].style.display = "block";  
-  dots[slideIndex - 1].className += " active";
-  setTimeout(showSlides, 6000); // Change image every  seconds
+const slides = document.querySelectorAll(".mySlides");
+const dots = document.querySelectorAll(".dot");
 
+function showSlide(index) {
+  slides.forEach(slide => {
+    slide.style.display = "none";
+    slide.classList.remove("fade");
+  });
+
+  dots.forEach(dot => {
+    dot.classList.remove("active");
+  });
+
+  slides[index].style.display = "block";
+  slides[index].classList.add("fade");
+  dots[index].classList.add("active");
 }
 
+function nextSlide() {
+  slideIndex = (slideIndex + 1) % slides.length;
+  showSlide(slideIndex);
+}
 
+function startSlideShow() {
+  showSlide(slideIndex);
+  slideTimer = setInterval(nextSlide, 6000);
+}
 
+function currentSlide(index) {
+  clearInterval(slideTimer);
+  slideIndex = index;
+  showSlide(slideIndex);
+  slideTimer = setInterval(nextSlide, 6000);
+}
 
+startSlideShow();

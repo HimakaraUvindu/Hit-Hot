@@ -1,32 +1,66 @@
-/* Reset */
-*{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto';
+/* ==========================================
+   Global Reset
+========================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', Arial, sans-serif;
 }
-/* Navigation bar */
-nav{
+
+/* ==========================================
+   Font
+========================================== */
+@font-face {
+  font-family: 'Roboto';
+  src: url('path/to/roboto-font.woff2') format('woff2'),
+       url('path/to/roboto-font.woff') format('woff');
+}
+
+/* ==========================================
+   Body
+========================================== */
+body {
+  font-family: Verdana, sans-serif;
+  background: #353535;
+  background-image: url("/image/BG.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+/* ==========================================
+   Navigation Bar
+========================================== */
+header {
+  position: relative;
+}
+
+nav {
   width: 100%;
-  background: rgb(0,0,0);
+  background: #000;
   overflow: auto;
 }
-ul{
-  padding: 0;
-  margin: 0 0 0 150px;
+
+ul {
   list-style: none;
+  margin: 0 0 0 150px;
+  padding: 0;
 }
-li{
+
+li {
   float: right;
 }
-li.login{
-  float: right;
-}
-.logo img{
+
+.logo img {
   position: absolute;
-  margin-top: 5px;
-  margin-left: 10px;
+  top: 5px;
+  left: 10px;
+  z-index: 10;
 }
-nav a{
+
+nav a {
   width: 140px;
   display: block;
   padding: 20px 15px;
@@ -35,126 +69,173 @@ nav a{
   color: #f2f2f2;
   text-align: center;
 }
-nav a:hover{
+
+nav a:hover {
   background: rgb(250, 70, 38);
-  transition: 0.10s;
+  transition: 0.2s;
   text-transform: uppercase;
 }
+
+/* Dropdown */
 .dropdown {
   float: left;
   overflow: hidden;
 }
+
 .dropdown .dropbtn {
-  font-size: 16px;  
+  font-size: 16px;
   border: none;
   outline: none;
-  color: white;
+  color: #ffffff;
   padding: 20px 10px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
+  cursor: pointer;
 }
-.dropdown:hover .dropbtn {
-  background-color:  rgb(250, 70, 38);
-}
-.dropbtn:hover{
-  background: rgb(250, 70, 38);
+
+.dropdown:hover .dropbtn,
+.dropbtn:hover {
+  background-color: rgb(250, 70, 38);
   text-transform: uppercase;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
   background-color: #000000;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  min-width: 220px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
+
 .dropdown-content a {
   float: none;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   padding: 12px 16px;
-  text-decoration: none;
   display: block;
   text-align: left;
+  text-decoration: none;
 }
+
 .dropdown-content a:hover {
-  background-color:  rgb(250, 70, 38);
+  background-color: rgb(250, 70, 38);
 }
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
-b {box-sizing: border-box;}
-body {font-family: Verdana, sans-serif;}
-.mySlides {display: none;}
-img {vertical-align: middle;}
-/* Slideshow container */
-.slideshow-container {
-  padding: auto;
-  max-width: 1600px;
-  position: relative;
-  margin: auto;
+
+/* Clear floated navigation items */
+nav::after {
+  content: "";
+  display: table;
+  clear: both;
 }
-/* The dots/bullets/indicators */
+
+/* ==========================================
+   Slideshow
+========================================== */
+.slideshow-container {
+  width: 100%;
+  height: 80vh;
+  max-height: 700px;
+  min-height: 350px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.mySlides {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.mySlides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* Prevent stretching */
+  object-position: center;
+  display: block;
+  vertical-align: middle;
+}
+
+/* Fade Animation */
+.fade {
+  animation: fadeEffect 1s;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   Slide Dots
+========================================== */
 .dot {
-  box-align : center;
   height: 15px;
   width: 15px;
-  margin: 0 2px;
+  margin: 0 4px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
+  cursor: pointer;
   transition: background-color 0.6s ease;
 }
+
+.dot.active,
 .active {
-  background-color: #717171;
+  background-color: #333;
 }
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 3s;
-}
-@keyframes fade {
-  from {opacity: .7} 
-  to {opacity: 1}
-}
-@font-face {
-    font-family: 'Roboto';
-    src: url('path/to/roboto-font.woff2') format('woff2'),
-         url('path/to/roboto-font.woff') format('woff');
-    /* Add more font formats if needed */
-}
+
+/* ==========================================
+   Introduction Section
+========================================== */
 .ad {
   margin: auto;
   border: 3px solid rgb(253, 248, 248);
   border-radius: 12px;
-  padding: 5px;
+  padding: 20px;
   width: 60%;
   text-align: center;
-  font-family: 'roboto';
   font-size: medium;
   color: #f2f2f2;
+  line-height: 1.8;
+  background: rgba(0, 0, 0, 0.35);
 }
-.button{
+
+/* ==========================================
+   Button
+========================================== */
+.button {
   display: inline-block;
   border-radius: 4px;
   background-color: #f4511e;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
   font-size: 28px;
   padding: 20px;
   width: 200px;
-  transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+  text-decoration: none;
+  transition: all 0.5s;
 }
+
 .button span {
-  cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
-.button span:after {
+
+.button span::after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -162,44 +243,38 @@ img {vertical-align: middle;}
   right: -20px;
   transition: 0.5s;
 }
+
 .button:hover span {
   padding-right: 25px;
 }
-.button:hover span:after {
+
+.button:hover span::after {
   opacity: 1;
   right: 0;
 }
+
+/* Center Button */
 .center {
- text-align: center;
+  text-align: center;
   margin: 0;
   position: relative;
   top: 70%;
   left: 50%;
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/*footer*/
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body{
-  background: #353535;
-}
-footer{
+
+/* ==========================================
+   Footer
+========================================== */
+footer {
   position: relative;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background: #141414;
-  height: auto;
-  width: auto;
-  font-family: "Roboto";
+  width: 100%;
   padding-top: 40px;
-  color: #fff;
+  color: #ffffff;
 }
-.footer-content{
+
+.footer-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,25 +282,79 @@ footer{
   text-align: center;
   text-transform: capitalize;
 }
-.footer-content h3{
+
+.footer-content h3 {
   font-size: 1.8rem;
   font-weight: 400;
-  text-transform: capitalize;
   line-height: 3rem;
 }
-.footer-bottom{
+
+.footer-bottom {
   background: #000;
   width: 100%;
   padding: 20px 0;
   text-align: center;
+  margin-top: 20px;
 }
-.footer-bottom p{
+
+.footer-bottom p {
   font-size: 14px;
   word-spacing: 2px;
   text-transform: capitalize;
 }
-body {
-  background-image: url("/image/BG.jpg");
-  background-size: cover; 
-  background-repeat: no-repeat; 
+
+/* ==========================================
+   Responsive Design
+========================================== */
+@media (max-width: 768px) {
+  /* Navigation */
+  ul {
+    margin-left: 0;
+  }
+
+  nav a {
+    width: auto;
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  .dropdown .dropbtn {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  .logo img {
+    width: 60px;
+    height: auto;
+  }
+
+  /* Slideshow */
+  .slideshow-container {
+    height: 55vh;
+    min-height: 250px;
+  }
+
+  /* Introduction */
+  .ad {
+    width: 90%;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  /* Button */
+  .button {
+    width: 180px;
+    font-size: 22px;
+    padding: 15px;
+  }
+
+  /* Footer */
+  .footer-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    padding: 0 10px;
+  }
 }
