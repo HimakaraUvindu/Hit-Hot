@@ -23,7 +23,7 @@
 body {
   font-family: Verdana, sans-serif;
   background: #353535;
-  background-image: url("/image/BG.jpg");
+  background-image: url("image/BG.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
